@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Norris Satelital GPS</string>
+    <string name="label_server">Server</string>
+    <string name="label_info">Bienvenido a la aplicación Android del sistema de rastreo. Al hacer clic en el botón, se le redirige a la plataforma de rastreo.
+        Debe utilizar el usuario y la contraseña proporcionado por la empresa de seguimiento para acceder al sistema. Esta pantalla no se mostrará de nuevo.</string>
+    <string name="button_start">Comienzo</string>
+    <string name="error_connection">Server connection failed</string>
+    <string name="file_browser">File Browser</string>
+    <string name="notification_channel">Default</string>
+</resources>

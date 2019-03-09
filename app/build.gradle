@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId 'es.com.norris.gps.tracker'
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1.0'
+    }
+
+    flavorDimensions 'default'
+    productFlavors {
+        regular
+        google
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:design:28.0.0-rc02'
+    googleImplementation 'com.google.firebase:firebase-core:16.0.3'
+    googleImplementation 'com.google.firebase:firebase-messaging:17.3.2'
+    googleImplementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+}
+
+if (getGradle().getStartParameter().getTaskRequests().toString().contains('Google')) {
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'io.fabric'
+
+    task copyJson(type: Copy) {
+        from '../../traccar-shared/google-services'
+        into '.'
+        include 'traccar-manager-android.json'
+        rename('traccar-manager-android.json', 'google-services.json')
+    }
+
+    afterEvaluate {
+        preBuild.dependsOn copyJson
+    }
+}
